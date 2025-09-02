@@ -1,12 +1,10 @@
-# 10/08/2025
-## W7 - *5m41s* (without gate)
-## **[QTP CM](https://dps.report/hcyF-20250810-102935_qpeer)** **5m38s (66%:wing:)**
+# 31/08/2025
+## W4 - *5m38s*
+## **[DEIMOS CM](https://dps.report/Vb3S-20250831-112827_dei)** **5m28s (76%:wing:)**
 **MVPs** 
-* __Locksmith God__ / __John Fking Wick__ didn't do any **CC**
-* __Beauty Pageant__ / __ThirdOrigin__ / __Rem__ / __Death Touched Lexi__ / __John Fking Wick__ got hit by the arrow mechanic. Remember, you can jump them. Work on your timing next time!
-* __Samara__ got hit by **orange circle AoE lightning hits**. Please move out, or dodge them the next time.
-* __Maybe Momo__ please work on your **Protection** uptime! It reduces strike damage your group takes, therefore people may survive longer and you will need to heal less!
-* __Locksmith God__, remember to cheer up the squad after dying early in the fight! Good morale helps a ton.
+* __ThirdOrigin__ Kudos to this **champion** for stepping in **1 oil(s)**
+* It looks like __ThirdOrigin__ actively avoided going into **greens**. But hey, gotta get that **DPS** number in the log, am I right?
+* __Maybe Momo__ showed everyone how poor they are by not using **food** and/or **utility** and saving their precious 30 silver.
 **LVPs** 
-* __Samara__ thanks for doing **5850** **CC** (**33.3%** of the squad)
-* Looks like __Beauty Pageant__ / __Incinerate This__ / __Kev The Troublesome__ are **pylon kiters** today. At least these DPS players contribute **something** to the society.
+* Give it up for __Crush Me Daddy__ as **handkite**. Without them, you would be stuck in LFG for 30 minutes.
+* __Samara__ / __Daddy Deimos__ provided a **boon uptime** so high, DPS players thought they were in the golem room.

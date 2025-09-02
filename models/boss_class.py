@@ -1067,7 +1067,7 @@ class Boss:
         sub1 = 5
         sub2 = 5
         
-        threshold = 0.9 # Boon uptime threshold
+        threshold = 0.96 # Boon uptime threshold
         
         for i in self.player_list:
             # Remove dead players

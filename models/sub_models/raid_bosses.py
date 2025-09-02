@@ -174,13 +174,13 @@ class GORS(Boss):
         lvplist = "\n**LVPs** \n"
         
         # Check for mechanics
-        msg_good_split = self.lvp_dmg_split()
+        msg_good_dps = self.get_lvp_dps_PMA(9)
         msg_good_bdps = self.get_lvp_bdps_PMA()
         msg_general = self.get_lvp_general('Full Fight')
         
         # Add prompts to praise if mechanics are bussin fr fr
-        if msg_good_split:
-            lvplist = lvplist + msg_good_split + "\n" 
+        if msg_good_dps:
+            lvplist = lvplist + msg_good_dps + "\n" 
 
         if msg_good_bdps:
             lvplist = lvplist + msg_good_bdps + "\n" 
@@ -382,14 +382,14 @@ class SABETHA(Boss):
         lvplist = "\n**LVPs** \n"
         
         # Check for mechanics
-        msg_good_split = self.lvp_dmg_split()
+        msg_good_dps = self.get_lvp_dps_PMA(4)
         msg_cannon = self.lvp_sab_cannon()
         msg_good_bdps = self.get_lvp_bdps_PMA()
         msg_general = self.get_lvp_general('Full Fight')
         
         # Add prompts to praise if mechanics are bussin fr fr
-        if msg_good_split:
-            lvplist = lvplist + msg_good_split + "\n" 
+        if msg_good_dps:
+            lvplist = lvplist + msg_good_dps + "\n" 
             
         if msg_cannon:
             lvplist = lvplist + msg_cannon + "\n" 
