@@ -80,7 +80,7 @@ if __name__ == "__main__":
     # "FR"       : French, legacy code, doesn't work anymore
     # "DE"       : German, translated by someone who doesn't know German :)
     
-    LANGUES["selected_language"] = LANGUES["EN_PMA"]
+    LANGUES["selected_language"] = LANGUES["EN_short"]
     
     
     args = _make_parser().parse_args()

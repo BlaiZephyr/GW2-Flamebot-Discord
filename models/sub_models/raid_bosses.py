@@ -384,7 +384,7 @@ class SABETHA(Boss):
         # Check for mechanics
         msg_good_dps = self.get_lvp_dps_PMA(4)
         msg_cannon = self.lvp_sab_cannon()
-        msg_good_bdps = self.get_lvp_bdps_PMA()
+        msg_good_bdps = self.get_lvp_bdps_PMA(4)
         msg_general = self.get_lvp_general('Full Fight')
         
         # Add prompts to praise if mechanics are bussin fr fr
@@ -2456,7 +2456,7 @@ class DHUUM(Boss):
         
     # Check if player stood in middle during succ
     def got_dhuum_suck(self, i_player: int):
-        return self.get_mech_value(i_player, "Suck dmg") > 0
+        return self.get_mech_value(i_player, "Suck dmg") > 1
     
     # Check if player got hit by armslam
     def got_dhuum_shackle(self, i_player: int):

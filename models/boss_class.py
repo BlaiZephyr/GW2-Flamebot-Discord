@@ -605,13 +605,21 @@ class Boss:
             # Swiftness   
             if self.log.pjcontent['players'][i]['group'] == Group_No:
                 if self.get_boon_uptime(i, 'Swiftness', phase) < threshold:
-                    mvp_swift_sub1.append(quick_sub1)
-                    mvp_swift_sub1.append(alac_sub1)
+                    if heal_sub1 == 69:
+                        if not soloheal:
+                            mvp_swift_sub1.append(alac_sub1)
+                            mvp_swift_sub1.append(quick_sub1)
+                    else:
+                        mvp_swift_sub1.append(heal_sub1)
             else:
                 if self.get_boon_uptime(i, 'Swiftness', phase) < threshold:
-                    mvp_swift_sub2.append(quick_sub2)
-                    mvp_swift_sub2.append(alac_sub2)
-         
+                    if heal_sub2 == 69:
+                        if not soloheal:
+                            mvp_swift_sub2.append(alac_sub2)
+                            mvp_swift_sub2.append(quick_sub2)
+                    else:
+                        mvp_swift_sub2.append(heal_sub2)
+
         # Manage MVPs
         
         mvp_might = []
@@ -660,18 +668,25 @@ class Boss:
             mvp_regen.append(mvp_regen_sub2[0])        
         # Swiftness
         if len(mvp_swift_sub1) > 2 * threshold:
-            mvp_swift.append(mvp_swift_sub1[0])
-            mvp_swift.append(mvp_swift_sub1[1])
+            if heal_sub1 == 69:
+                if not soloheal:
+                    mvp_swift.append(mvp_swift_sub1[0])
+                    mvp_swift.append(mvp_swift_sub1[1])
+                else:
+                    mvp_swift.append(mvp_swift_sub1[0])
         if len(mvp_swift_sub2) > 2 * threshold:
-            mvp_swift.append(mvp_swift_sub2[0])
-            mvp_swift.append(mvp_swift_sub2[1]) 
-
+            if heal_sub2 == 69:
+                if not soloheal:
+                    mvp_swift.append(mvp_swift_sub2[0])
+                    mvp_swift.append(mvp_swift_sub2[1])
+                else:
+                    mvp_swift.append(mvp_swift_sub2[0])
+             
         # Return Flame if quick or alac is missing on top of other boons
         # Quickness
         if len(mvp_quick) > 0:
             self.add_mvps(list(set(mvp_quick)))         
             mvp_name = []
-
             for mvp in mvp_quick:
                 if mvp in (mvp_might + mvp_fury + mvp_prot + mvp_regen + mvp_swift):
                     mvp_name.append(mvp)                  
@@ -685,7 +700,6 @@ class Boss:
                         mvp_regen.remove(mvp)
                     if mvp in mvp_swift:
                         mvp_swift.remove(mvp)
-
             mvp_quick = [mvp for mvp in mvp_quick if mvp not in mvp_name]
             mvp_names_2 = self.players_to_string(list(set(mvp_name)))       
             mvp_names = self.players_to_string(list(set(mvp_quick)))
@@ -698,7 +712,6 @@ class Boss:
         if len(mvp_alac) > 0:
             self.add_mvps(list(set(mvp_alac)))
             mvp_name = []
-
             for mvp in mvp_alac:
                 if mvp in (mvp_might + mvp_fury + mvp_prot + mvp_regen + mvp_swift):
                     mvp_name.append(mvp)     
@@ -712,7 +725,6 @@ class Boss:
                         mvp_regen.remove(mvp)
                     if mvp in mvp_swift:
                         mvp_swift.remove(mvp)
-            
             mvp_alac = [mvp for mvp in mvp_alac if mvp not in mvp_name]
             mvp_names_2 = self.players_to_string(list(set(mvp_name)))       
             mvp_names = self.players_to_string(list(set(mvp_alac)))    
@@ -720,7 +732,6 @@ class Boss:
                 prompt += LANGUES["selected_language"]["MVP ALAC MERGED"].format(mvp_names=mvp_names_2) + "\n"
             if len(mvp_alac) > 0:
                 prompt += LANGUES["selected_language"]["MVP ALAC"].format(mvp_names=mvp_names) + "\n"
-
 
         # Return Flame, multiple boons missing
 
