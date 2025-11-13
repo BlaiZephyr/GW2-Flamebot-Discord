@@ -436,7 +436,7 @@ class Boss:
         sup_name              = self.players_to_string(i_sup)
         bad_dps               = []
         for i in self.player_list:   
-            if any(filter_func(i) for filter_func in extra_exclude) or self.is_dead(i) or self.is_support(i) or self.is_bannerslave(i):
+            if any(filter_func(i) for filter_func in extra_exclude) or self.is_dead(i) or self.is_support(i) or self.is_bannerslave(i) or self.is_heal(i):
                 continue
             dps = self.get_dmg_boss(i)
             if dps < sup_max_dmg:

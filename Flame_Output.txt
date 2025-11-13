@@ -1,12 +1,7 @@
 # 05/10/2025
-## W5 - *5m10s*
-## **[DHUUM](https://dps.report/6mMa-20251005-110735_dhuum)** **5m08s (93%:wing:)**
+## W6 - *2m14s*
+## **[CA CM](https://dps.report/PYsN-20251005-102550_ca)** **2m06s (-1%:wing:)**
 **MVPs** 
-* __Kev Shackleshot__ as DPS did same DPS as __Canceled Overload__ who is support
-* __Zarek Bertolli__ took **1 cracks**
-* __Sabinè Fangîrl__ got sucked
-* __Canceled Overload__ no quickness
-* __Samara__ no alacrity
-* __Zarek Bertolli__ no food/utility
+* __Canceled Overload__ / __Samara__ let __Not Fréddie__ get **knocked down**. Please bring more stability, aegis, or similar next time.
 **LVPs** 
-* __Arrow Of Fatality__ / __Divine Toilet__ did a total **30.0kdps** (**32%**). Nice writs btw
+* __Arrow Of Fatality__ / __Kev Shackleshot__ / __Not Fréddie__ / __Artilery Toilet__ / __Rem__ did a total of **202.3kdps** (**74%** of the squad). Nice usage of writs!

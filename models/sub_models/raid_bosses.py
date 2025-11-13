@@ -2574,8 +2574,8 @@ class CA(Boss):
         # Return if no one got hatecrimed
         if not i_players:
             return
-        # Return if less than 3 people got stunned (they were probably AFK in narnia)
-        if len(i_players) < 3:
+        # Return if less than 2 people got stunned (they were probably AFK in narnia)
+        if len(i_players) < 2:
             return
         # Check victim subgroups
         victim_in_sub1 = False
@@ -2625,7 +2625,7 @@ class CA(Boss):
     
     # Check if player got hit by armslam
     def got_CA_armslam(self, i_player: int):
-        return self.get_mech_value(i_player, "Arm Slam") > 0
+        return self.get_mech_value(i_player, "Knocked Down")> 0
     
     ################################ DATA MECHAS ################################
 
