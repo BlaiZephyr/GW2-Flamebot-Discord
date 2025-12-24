@@ -19,7 +19,7 @@ class AH(Boss):
 
     def get_mvp(self):
         # Create MVP prompt
-        mvplist = "**MVPs** \n"
+        mvplist = "**LVPs** \n"
 
         # Check for mechanics
         msg_exposed = self.mvp_ah_exposed()
@@ -49,7 +49,7 @@ class AH(Boss):
     
     def get_lvp(self):
         # Create LVP prompt
-        lvplist = "**LVPs** \n"
+        lvplist = "**MVPs** \n"
 
         # Check for mechanics
         msg_good_dps = self.get_lvp_dps_PMA(14)
