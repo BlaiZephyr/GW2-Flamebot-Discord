@@ -5,7 +5,7 @@ import os
 import sys
 import re
 from dotenv import load_dotenv
-
+import random
 load_dotenv()
 
 # Configuration
@@ -150,7 +150,11 @@ async def send_report(ctx, *urls_or_file):
             auto_archive_duration=1440  # 24 hours
         )
         
-        await initial_msg.edit(content=f"flame generated")
+        with open('insults.txt', 'r') as file:
+            lines = file.readlines()
+            random_insult = random.choice(lines).strip()
+
+        await initial_msg.edit(content=f"{random_insult}")
         
         # Send report in the thread
         if len(report_text) <= 1990:
