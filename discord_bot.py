@@ -37,56 +37,24 @@ async def send_report(ctx, *urls_or_file):
         
         # Check if first argument is a URL or file
         first_arg = urls_or_file[0]
+        
+        # If the first argument is a URL, handle URL extraction
         if first_arg.startswith('http://') or first_arg.startswith('https://'):
-            # Create temp file with all URLs
-            temp_input = os.path.join(script_dir, 'temp_input.txt')
+            # Collect URLs from the entire command content (after the command prefix)
+            url_text = ctx.message.content[len('!flame '):]
             
-            # Collect all URLs from the original message content
-            message_content = ctx.message.content
+            # Extract all URLs using regex
+            all_urls = re.findall(r'https?://[^\s]+', url_text)
             
-            # Debug: print the raw message
-            print(f"Raw message content: {message_content}")
-            print(f"Parsed args count: {len(urls_or_file)}")
-            print(f"Parsed args: {urls_or_file}")
-            
-            # Remove the command part
-            message_without_command = message_content.split(maxsplit=1)
-            
-            all_urls = []
-            if len(message_without_command) > 1:
-                # Improved URL extraction - handles Discord formatting better
-                url_text = message_without_command[1]
-                
-                # Remove Discord's <> wrapping
-                url_text = url_text.replace('<', '').replace('>', '')
-                
-                # Extract all URLs using regex
-                found_urls = re.findall(r'https?://[^\s]+', url_text)
-                
-                # Clean each URL more thoroughly
-                for url in found_urls:
-                    # Remove trailing punctuation and markdown
-                    cleaned = re.sub(r'[_*\)\],\.]+$', '', url)
-                    # Remove any remaining special characters at the end
-                    cleaned = cleaned.rstrip('_*<>[](),.;!')
-                    if cleaned:
-                        all_urls.append(cleaned)
-            
-            # Fallback to parsed arguments if regex didn't find anything
-            if not all_urls:
-                all_urls = []
-                for url in urls_or_file:
-                    # Clean URLs from parsed arguments too
-                    cleaned = url.replace('<', '').replace('>', '').strip()
-                    cleaned = cleaned.rstrip('_*<>[](),.;!')
-                    if cleaned:
-                        all_urls.append(cleaned)
-            
+            # Clean URLs from any special characters at the end
+            all_urls = [re.sub(r'[_*\)\],\.]+$', '', url).rstrip('_*<>[](),.;!') for url in all_urls]
+
             if not all_urls:
                 await initial_msg.edit(content="No valid URLs found!")
                 return
             
-            # Write to temp file
+            # Create a temporary input file to store the URLs
+            temp_input = os.path.join(script_dir, 'temp_input.txt')
             with open(temp_input, 'w') as f:
                 for url in all_urls:
                     f.write(url + '\n')
@@ -96,7 +64,7 @@ async def send_report(ctx, *urls_or_file):
             with open(temp_input, 'r') as f:
                 print(f.read())
             
-            input_file = 'temp_input.txt'
+            input_file = temp_input
             await initial_msg.edit(content=f"Processing {len(all_urls)} URL(s)...")
             
             # Debug: log what URLs were captured
@@ -104,7 +72,7 @@ async def send_report(ctx, *urls_or_file):
             for i, url in enumerate(all_urls, 1):
                 print(f"  {i}. {url}")
         else:
-            # Treat as filename
+            # Treat the first argument as a filename
             input_file = first_arg
         
         process = await asyncio.create_subprocess_exec(
