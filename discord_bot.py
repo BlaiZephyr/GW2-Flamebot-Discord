@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 import random
 load_dotenv()
 
+
 # Configuration
 intents = discord.Intents.default()
 intents.message_content = True
@@ -18,7 +19,6 @@ async def on_ready():
     print(f'{bot.user} has connected to Discord!')
     print(f'Bot is in {len(bot.guilds)} guilds')
     print(f'Ready to receive commands!')
-
 @bot.command(name='flame')
 async def send_report(ctx, *urls_or_file):
     """Generate and send GW2 raid flame from URL(s) or input file"""
@@ -41,13 +41,17 @@ async def send_report(ctx, *urls_or_file):
         # If the first argument is a URL, handle URL extraction
         if first_arg.startswith('http://') or first_arg.startswith('https://'):
             # Collect URLs from the entire command content (after the command prefix)
-            url_text = ctx.message.content[len('!flame '):]
+            message_content = ctx.message.content
+            message_without_command = message_content.split(maxsplit=1)
             
-            # Extract all URLs using regex
-            all_urls = re.findall(r'https?://[^\s]+', url_text)
-            
-            # Clean URLs from any special characters at the end
-            all_urls = [re.sub(r'[_*\)\],\.]+$', '', url).rstrip('_*<>[](),.;!') for url in all_urls]
+            all_urls = []
+            if len(message_without_command) > 1:
+                # Extract all URLs using regex - improved pattern
+                # This will match URLs even if they have markdown formatting
+                found_urls = re.findall(r'https?://[^\s<>]+', message_without_command[1])
+                
+                # Clean each URL
+                all_urls = [url.strip('_*<>') for url in found_urls]
 
             if not all_urls:
                 await initial_msg.edit(content="No valid URLs found!")
@@ -180,6 +184,7 @@ async def send_report(ctx, *urls_or_file):
                 os.remove(temp_input)
             except:
                 pass
+
 
 @bot.command(name='ping')
 async def ping(ctx):
